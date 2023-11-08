@@ -2,7 +2,7 @@
 import { Body, Controller, Post, Get, Put, Param, Delete } from '@nestjs/common';
 import { ProdutoRepository } from './produto.repository';
 import { CriaProdutoDTO } from './DTO/produtos.dto';
-import { ProdutoEntidy } from './produto.entidy';
+import { ProdutoEntidy } from './produto.entity';
 import { v4 as uuid } from 'uuid';
 import { AtualizaProdutoDTO } from './DTO/AtualizaProduto.dto';
 
@@ -24,8 +24,8 @@ export class ProdutoController {
     produto.nome = data.nome
     produto.valor = data.valor
     produto.descricao = data.descricao
-    produto.caracteristicas = data.caracteristicas
-    produto.imgens = data.imagens
+    // produto.caracteristicas = data.caracteristicas
+    // produto.imgens = data.imagens
     produto.categoria = data.categoria
 
     const produtoCadastro = await this.produtoRepository.salva(produto)

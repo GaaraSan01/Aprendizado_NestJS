@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-import { ProdutoEntidy } from './produto.entidy';
+import { ProdutoEntidy } from './produto.entity';
 
 
 @Injectable()

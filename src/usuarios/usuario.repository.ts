@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-import { UsuarioEntidy } from './usuario.entidy';
+import { UsuarioEntidy } from './usuario.entity';
 
 @Injectable()
 export class UsuarioRepository {

@@ -3,7 +3,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { UsuarioRepository } from "./usuario.repository";
 import { UsuariosDTO } from "./DTO/usuarios.dto";
-import { UsuarioEntidy } from "./usuario.entidy";
+import { UsuarioEntidy } from "./usuario.entity";
 import { v4 as uuid } from "uuid";
 import { ListaUsuarioDTO } from "./DTO/listaUsuario.dto";
 import { AtualizaUsuarioDTO } from "./DTO/usuariosAtualiza.dto";
