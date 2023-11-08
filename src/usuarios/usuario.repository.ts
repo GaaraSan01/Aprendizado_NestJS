@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-import { UsuarioEntidy } from './usuario.entity';
+import { UsuarioEntity } from './usuario.entity';
 
 @Injectable()
 export class UsuarioRepository {
-  private usuarios: UsuarioEntidy[] = [];
+  private usuarios: UsuarioEntity[] = [];
 
-  async salvar(usuario: UsuarioEntidy) {
+  async salvar(usuario: UsuarioEntity) {
     return this.usuarios.push(usuario);
   }
 
@@ -34,7 +34,7 @@ export class UsuarioRepository {
     return possivelUsuarios
   }
 
-  async atualiza(id: string, putData: Partial<UsuarioEntidy>){
+  async atualiza(id: string, putData: Partial<UsuarioEntity>){
     const usuario = this.buscaPorId(id)
 
     Object.entries(putData).forEach(([key, value]) => {

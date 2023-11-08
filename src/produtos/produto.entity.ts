@@ -5,16 +5,19 @@ import {
     PrimaryGeneratedColumn, 
     CreateDateColumn, 
     UpdateDateColumn, 
-    DeleteDateColumn 
+    DeleteDateColumn, 
+    OneToMany
 } from 'typeorm';
+import { ProdutoCaracteristicaEntity } from './produto-caracteristica.entity';
+import { ProdutoImagensEntity } from './produto-imagens.entity';
 
 @Entity({name: 'produtos'})
 export class ProdutoEntidy {
     @PrimaryGeneratedColumn('uuid')
-    id_produto: string;
+    id: string;
 
-    @Column({name: 'usuario_id', length: 100, nullable:false})
-    id_usuario: string;
+    @Column({ name: 'usuario_id', length: 100, nullable: false })
+    usuarioId: string;
 
     @Column({name: 'nome', length: 100, nullable:false})
     nome: string;
@@ -22,16 +25,25 @@ export class ProdutoEntidy {
     @Column({name: 'valor', nullable:false})
     valor: number;
 
-    @Column({name: 'nome', length: 255, nullable:false})
+    @Column({name: 'descricao', length: 255, nullable:false})
     descricao: string;
 
     @Column({name: 'quantidade', nullable:false})
     quantidadeDisponivel: number;
 
-    // caracteristicas: CaracteristicaEndity[]
-    // imgens: ImagensEndity[]
+    @OneToMany(() => ProdutoCaracteristicaEntity,
+     (produtoCaracteristicaEndity) => produtoCaracteristicaEndity.produto,
+     { cascade: true, eager: true }
+    )
+    caracteristicas: ProdutoCaracteristicaEntity[]
 
-    @Column({name: 'nome', length: 100, nullable:false})
+    @OneToMany(() => ProdutoImagensEntity, 
+        (imagens) => imagens.produto,
+        { cascade: true, eager: true }
+    )
+    imagens: ProdutoImagensEntity[]
+
+    @Column({name: 'categoria', length: 100, nullable:false})
     categoria: string;
 
     @CreateDateColumn({name: 'created_at'})

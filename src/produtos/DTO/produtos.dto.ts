@@ -12,6 +12,7 @@ import {
     Min, 
     ValidateNested,
 } from "class-validator"
+import { ProdutoEntidy } from "../produto.entity";
 
 export class CriaProdutoDTO {
 
@@ -68,6 +69,9 @@ export class CriaProdutoDTO {
 }
 
 export class CaracteristicasProdutoDTO {
+
+    id: string;
+
     @IsString()
     @IsNotEmpty({message: "O nome do produtos é obrigatório!"})
     nome: string;
@@ -78,9 +82,13 @@ export class CaracteristicasProdutoDTO {
     })
     @IsNotEmpty({ message: 'Descrição da caracteristica não pode ser vazia '})
     descricao: string
+
+    produto: ProdutoEntidy;
 }
 
 export class ImagensProdutoDTO {
+    id: string;
+
     @IsUrl(undefined, {
         message: "Digite uma URL válida!"
     })
@@ -92,4 +100,6 @@ export class ImagensProdutoDTO {
     })
     @IsNotEmpty({ message: 'Descrição da imagem não pode ser vazia '})
     descricao: string
+
+    produto: ProdutoEntidy;
 }

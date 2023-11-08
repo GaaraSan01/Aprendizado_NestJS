@@ -18,7 +18,7 @@ export class ProdutoRepository {
 
   private produtoId (id: string) {
     const possivelProduto = this.produtoRepository.find(
-      produto => produto.id_produto === id
+      produto => produto.id === id
     )
     if(!possivelProduto){
       throw new Error("Produto não encontrado")
@@ -41,7 +41,7 @@ export class ProdutoRepository {
   async remove(id: string){
     const produtoRemovido = this.produtoId(id)
     this.produtoRepository = this.produtoRepository.filter((produto) => {
-      produto.id_produto !== id
+      produto.id !== id
     })
     return produtoRemovido
   }
